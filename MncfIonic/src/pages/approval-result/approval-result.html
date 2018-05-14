@@ -1,0 +1,29 @@
+<ion-footer>
+  <ion-row>
+    <ion-label result-label>Result</ion-label>
+  </ion-row>
+  <ion-row white-background>
+    <ion-item no-padding no-margin no-lines>
+      <ion-label floating style="display:none;">Result</ion-label>
+      <ion-select padding-left [(ngModel)]="result.kodeStatus" multiple="false">
+        <ion-option *ngFor="let status of listStatus" [value]="status.kodeStatus">{{status.nama}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <ion-label result-label>Notes</ion-label>
+  </ion-row>
+  <ion-row white-background>
+    <!--<ion-item no-padding no-margin no-lines>-->
+    <ion-textarea id="text-catatan" rows="5" no-padding no-margin result-text [(ngModel)]="result.catatan"></ion-textarea><!---->
+    <!--</ion-item>-->
+  </ion-row>
+  <ion-row no-padding no-margin>
+    <ion-col width-50 padding>
+      <button ion-button color="google" result-button (click)="onCancel()">Cancel</button>
+    </ion-col>
+    <ion-col width-50 padding>
+      <button ion-button color="facebook" result-button (click)="onSubmit()">Submit</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

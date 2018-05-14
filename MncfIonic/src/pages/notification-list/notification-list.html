@@ -1,0 +1,50 @@
+<ion-header><!--pattern-background no-border-->
+  <ion-navbar><!--transparent-->
+    <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+
+    <ion-title *ngIf="!showOptions">Notification</ion-title>
+    <div *ngIf="showOptions" class="sel-info" >{{this.selectedMessageId.length}} selected</div>
+
+    <ion-buttons *ngIf="showOptions" end>
+      <button ion-button (click)="onFinish()">
+        <ion-icon name="done"></ion-icon>
+      </button>
+      <button ion-button (click)="onHasRead()">
+        <ion-icon name="book"></ion-icon>
+      </button>
+      <button ion-button (click)="onDelete()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+    
+    <ion-buttons *ngIf="!showOptions" end>
+      <button ion-button>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content white-background>
+  <ion-refresher *ngIf="!showOptions" (ionRefresh)="onSync($event)">
+    <ion-refresher-content
+      pullingIcon="none"
+      pullingText=""
+      refreshingSpinner="none"
+      refreshingText=""><!--refreshingSpinner="ios-small"-->
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-card>
+    <ion-item *ngFor="let item of dataList" id="{{item.kode}}" (click)="onDetail(item)" (longPress)="onLongPress($event,item)">
+      <ion-icon item-left color="{{(item.dibaca?'vk':'soundcloud')}}" name="{{(item.dibaca?'mail-open':'mail')}}"></ion-icon>
+      <div class="notification">
+        <b>{{item.judul}}</b>
+        <p>{{item.keteranganSingkat}}</p>
+      </div>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

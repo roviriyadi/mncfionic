@@ -1,0 +1,29 @@
+page-verifikasi {
+    
+    .scroll-content{
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+    
+    padding: 10px;
+
+    .form {
+        background: #fff;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-z2;
+        padding: 15px;
+        margin-top: 50%;
+
+        .item-inner {
+            border-bottom-color: theme-colors('mainColors', 'primary') !important;
+            box-shadow: none !important;
+        }
+
+        [title] {
+            font-size: font-size-text('h1');
+            color: theme-colors('textColors', 'primary');
+            text-transform: uppercase;
+            margin: 0 10px;
+        }
+    }
+
+}

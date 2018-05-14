@@ -1,0 +1,43 @@
+page-notification-list {
+
+    .selected-message{
+        background-color: rgba(16, 72, 255, 0.137);
+    }
+
+    .sel-info{
+        color: white;
+        font-weight: bold;
+        font-family: unset;
+        text-align: left;
+    }
+    .notification-x{
+        div{
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+    .notification{
+        b {
+            font-size: 0.9em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: smaller;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+        }
+    }
+
+    .flex-col{
+        &:first-of-type {
+            flex: 0 0 10px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="chatbubble">
+    <img class="profile-pic {{(msg.position?msg.position:'left')}}" src="{{(msg.img?msg.img:'../assets/images/avatar/undefined.png')}}">
+    <div class="chat-bubble {{(msg.position?msg.position:'left')}}">
+        <div class="message">{{msg.pesan}}</div>
+        <div class="message-detail">
+            <span style="font-weight:bold;">{{msg.namaPengirim}} </span>,
+            <span>{{msg.waktu | date:'dd/MM/yyyy HH:mm:ss'}}</span>
+        </div>
+    </div>
+    <div class="unread-icon" *ngIf="!msg.dibaca">
+        <ion-icon icon-small item-right>
+            <i class="icon icon-email unread-color"></i>
+        </ion-icon>
+    </div>
+</div>

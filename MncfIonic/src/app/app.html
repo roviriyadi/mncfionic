@@ -1,0 +1,101 @@
+<ion-split-pane when="md">
+<ion-menu [content]="content">
+  <ion-header default-background-blend>
+    <div class="header-background-image" padding-top>
+      <!--<img (click)="goHome()" src="assets/images/avatar/undefined.png">-->
+      <img *ngIf="user && user.avatarLink" src="{{user.avatarLink}}" image-cache/>
+      <h1 item-title text-center full-width>{{user.nama}}</h1>
+    </div>
+  </ion-header>
+  <!-- Menu Main List -->
+  <ion-content color="primary">
+    <ion-list no-margin>
+
+      <button menuClose paddinge-left ion-item no-lines item-title main-menu (click)="goHome()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="google" name="home"></ion-icon>
+        </ion-icon>
+        Home
+      </button>
+
+      <button menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onDownloadManualBook()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="vk" name="book"></ion-icon>
+        </ion-icon>
+        Download Manual Book
+      </button>
+
+      <button *ngIf="!loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onLogin()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="twitter" name="log-in"></ion-icon>
+        </ion-icon>
+        Login
+      </button>
+      
+      <!--
+      <button *ngIf="!loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onRegister()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="whatsapp" name="paper"></ion-icon>
+        </ion-icon>
+        Register
+      </button>
+
+      <button *ngIf="!loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onVerifikasi(null)">
+        <ion-icon icon-small item-left>
+          <ion-icon color="facebook" name="checkmark-circle"></ion-icon>
+        </ion-icon>
+        Verify Account
+      </button>
+      -->
+
+      <button *ngIf="loggedUser"  menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onApproval()"> <!---->
+        <ion-icon icon-small item-left>
+          <ion-icon color="instagram" name="briefcase"></ion-icon>
+        </ion-icon>
+        Approval
+        <div item-right *ngIf="approvalNewCount>0" >
+          <ion-badge color="danger">{{approvalNewCount}}</ion-badge>
+        </div>
+      </button>
+
+      <button *ngIf="loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onDashboard('sales')">
+        <ion-icon icon-small item-left>
+          <ion-icon color="pinterest" name="calendar"></ion-icon>
+        </ion-icon>
+        <ion-label>Dashboard Sales</ion-label>
+      </button>
+
+      <button *ngIf="loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onDashboard('cmo')">
+        <ion-icon icon-small item-left>
+          <ion-icon color="pinterest" name="calendar"></ion-icon>
+        </ion-icon>
+        <ion-label>Dashboard CMO</ion-label>
+      </button>
+
+      <button *ngIf="loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onDashboard('showroom')">
+        <ion-icon icon-small item-left>
+          <ion-icon color="pinterest" name="calendar"></ion-icon>
+        </ion-icon>
+        <ion-label>Dashboard Showroom</ion-label>
+      </button>
+<!--
+      <button menuClose paddinge-left ion-item no-lines item-title main-menu (click)="testNotifikasi()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="danger" name="notifications"></ion-icon>
+        </ion-icon>
+        Test Notifikasi
+      </button>
+-->
+      <button *ngIf="loggedUser" menuClose paddinge-left ion-item no-lines item-title main-menu (click)="onLogout()">
+        <ion-icon icon-small item-left>
+          <ion-icon color="danger" name="log-out"></ion-icon>
+        </ion-icon>
+        Logout
+      </button>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content main swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

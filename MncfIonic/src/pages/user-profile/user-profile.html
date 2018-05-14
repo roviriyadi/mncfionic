@@ -1,0 +1,99 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen elastic-header> <!---->
+  <ion-item no-lines default-background-blend header-item-background id="elastic-header"><!---->
+
+    <ion-thumbnail>
+      <img *ngIf="user && user.avatarLink" src="{{user.avatarLink}}" image-cache/>
+      <!--<img *ngIf="user && user.avatarLink" inputSrc="{{user.avatarLink}}" lazy-load />-->
+    </ion-thumbnail>
+    <h3 parallax-title text-center margin-top>{{user.nama}}</h3>
+
+  </ion-item>
+
+  <ion-grid no-padding>
+    <ion-row>
+      <!--Content-->
+      <ion-col col-12>
+        <ion-list no-padding no-margin>
+          <ion-item>
+            <ion-label>Ubah Profil</ion-label>
+            <ion-button icon-small item-right role="img" class="icon icon-md item-icon">
+              <i class="icon icon-tooltip-edit"></i>
+            </ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Login Otomatis</ion-label>
+            <ion-toggle color="google" [(ngModel)]="user.loginOtomatis" (ionChange)="changeLoginOtomatis($event)"></ion-toggle>
+          </ion-item>
+        </ion-list>
+
+        <ion-list no-padding no-margin>
+          <ion-list-header no-margin color="twitter">
+            <ion-icon color="facebook" class="icon icon-wallet-membership" item-left></ion-icon>
+            <h2 style="display: inline-block;">E-Card</h2>
+          </ion-list-header>
+          <ion-row parent-card wrap>
+            <div background-size e-card>
+              <div div-right>
+                <p>VALID TO {{ user.tglExp | date:'MM/yyyy' }}</p>
+                <p no-padding no-margin>{{user.memberId}}</p>
+                <p no-padding no-margin>Account Number</p>
+              </div>
+              <div div-left>
+                <p card-name no-padding no-margin>{{user.nama}}</p>
+                <p card-joined no-padding no-margin>MEMBER SINCE {{user.tglJoin | date:'MM/yyyy' }}</p>
+              </div>
+            </div>
+          </ion-row>
+        </ion-list>
+
+        <ion-list no-padding no-margin>
+          <ion-list-header no-margin color="twitter">
+            <ion-icon color="facebook" class="icon icon-qrcode" item-left></ion-icon>
+            <h2 style="display: inline-block;">QR Code</h2>
+          </ion-list-header>
+          <ion-item>
+            <ion-row wrap>
+              <div qr-card>
+                <ngx-qrcode [qrc-value]="user.memberId"></ngx-qrcode>
+              </div>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+  
+<!--
+<ion-content padding>
+
+  <ion-row wrap>
+    <div e-card>
+      <div div-right>
+        <p>VALID TO {{ user.tglExp | date:'MM/yyyy' }}</p>
+        <p no-padding no-margin>{{user.memberId}}</p>
+        <p no-padding no-margin>Account Number</p>
+      </div>
+      <div div-left>
+        <p card-name no-padding no-margin>{{user.nama}}</p>
+        <p card-joined no-padding no-margin>MEMBER SINCE {{user.tglJoin | date:'MM/yyyy' }}</p>
+      </div>
+    </div>
+  </ion-row>
+</ion-content>
+
+<ion-footer no-margin>
+  <ion-card no-margin qr-card *ngIf="user.memberId">
+    <ngx-qrcode [qrc-value]="user.memberId"></ngx-qrcode>
+  </ion-card>
+<ion-footer>
+-->

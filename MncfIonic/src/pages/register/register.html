@@ -1,0 +1,142 @@
+<!--<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row wrap padding>
+      <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>-->
+      <ion-content padding no-margin transparent>
+        <!--Form-->
+          <!-- Input Kode -->
+        <form novalidate class="form" (ngSubmit)="onSubmit()">
+          <!--Form Title-->
+          <h1 title text-center>{{form.register}}</h1>
+
+          <!-- Input Kode -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.kode}}</ion-label>
+            <ion-input required type="text" pattern="[a-z]*" minlength="3" maxlength="15" [formControl]="kode"></ion-input>
+          </ion-item>
+          <div *ngIf="!kode.valid && kode.touched">
+            <div error *ngIf="kode.hasError('required')">
+              User ID required..!
+            </div>
+            <div error *ngIf="kode.hasError('minlength')">
+              User ID minimum 3 character..!
+            </div>
+            <div error *ngIf="kode.hasError('pattern')">
+              User ID must input from a to z..!
+            </div>
+          </div>
+          <!-- End Input Kode -->
+
+          <!-- Input Nama -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.nama}}</ion-label>
+            <ion-input required type="text" minlength="3" [formControl]="nama"></ion-input>
+          </ion-item>
+          <div *ngIf="!nama.valid && nama.touched">
+            <div error *ngIf="nama.hasError('required')">
+              Name required..!
+            </div>
+            <div error *ngIf="nama.hasError('minlength')">
+              Name minimum 3 character..!
+            </div>
+          </div>
+          <!-- End Input Kode -->
+
+          <!-- Input Email -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.email}}</ion-label>
+            <ion-input required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [formControl]="email"></ion-input>
+          </ion-item>
+          <div *ngIf="!email.valid && email.touched">
+            <div error *ngIf="email.hasError('required')">
+              Email Address required..!
+            </div>
+            <div error *ngIf="email.hasError('pattern') && !email.hasError('required')">
+                Invalid email address format..!
+            </div>
+          </div>
+          <!-- End Input Email -->
+
+          <!-- Input No HP -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.noHp}}</ion-label>
+            <ion-input required type="text" pattern="[0-9]*" minlength="10" [formControl]="noHp"></ion-input>
+          </ion-item>
+          <div *ngIf="!noHp.valid && noHp.touched">
+            <div error *ngIf="noHp.hasError('required')">
+              Phone Number required..!
+            </div>
+            <div error *ngIf="noHp.hasError('minlength') && !noHp.hasError('pattern')">
+              Phone Number minimum 10 digit..!
+            </div>
+            <div error *ngIf="noHp.hasError('pattern')">
+              Phone must be a number..!
+            </div>
+          </div>
+          <!-- End Input Kode -->
+
+          <!-- Input Password -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.password}}</ion-label>
+            <ion-input required type="password" minlength="6" [formControl]="password"></ion-input>
+          </ion-item>
+          <div *ngIf="!password.valid && password.touched">
+            <div error *ngIf="password.hasError('required')">
+              Password required..!
+            </div>
+            <div error *ngIf="password.hasError('minlength')">
+              Password minimum 6 character..!
+            </div>
+            <div error *ngIf="password.hasError('maxlength')">
+              Password maximum 10 character..!
+            </div>
+          </div>
+
+          <ion-item no-padding>
+            <ion-label floating>{{form.confirmPassword}}</ion-label>
+            <ion-input required type="password" [formControl]="confirmPassword"></ion-input>
+          </ion-item>
+          <div *ngIf="!confirmPassword.valid && confirmPassword.touched">
+            <div error *ngIf="confirmPassword.hasError('required')">
+              Password required..!
+            </div>
+            <div error *ngIf="confirmPassword.hasError('pw_mismatch')">
+              Password not match..!
+            </div>
+          </div>
+          <!-- End Input Password -->
+
+          <!---Register button-->
+          <!--
+          <button ion-item no-lines margin-top color="facebook" [disabled]="!register.valid">
+            <ion-label item-left>Submit</ion-label>
+            <ion-icon color="whatsapp" item-right name="send"></ion-icon>
+          </button>
+          -->
+          <ion-grid padding-top>
+            <ion-row>
+              <ion-col>
+                <button ion-button left color="danger" full-width (click)="onCancel($event)">Cancel</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button right color="facebook" full-width [disabled]="!register.valid">Submit</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </form>
+
+      </ion-content>
+<!--
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>-->

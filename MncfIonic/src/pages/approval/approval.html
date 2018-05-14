@@ -1,0 +1,50 @@
+<ion-header><!-- #head-->
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+    <ion-title>Approval</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding white-background><!--hide-header [header]="head"-->
+  <ion-list class="accordion-list" no-lines>
+    <!-- First Level -->
+    <ion-list-header *ngFor="let item of accordionItems; let i = index" no-lines no-padding no-margin>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none color="linkedin"><!-- [ngClass]="{'section-active': item.open, 'section': !item.open}"-->
+        <ion-icon item-left name="{{item.icon}}"></ion-icon>
+        {{ item.name }}
+        <ion-icon item-right name="{{(item.open?'arrow-up':'arrow-down')}}"></ion-icon>
+      </button>
+ 
+      <ion-list [@accordion]="(item.children && item.open ? 'opened' : 'closed')"><!--*ngIf="item.children && item.open">-->
+        <!-- Second Level -->
+        <ion-list-header *ngFor="let child of item.children; let j = index" no-padding no-margin>
+          <!-- Toggle Button -->
+          <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>
+            <!--<ion-icon item-left name="{{(child.open?'close':'add')}}"></ion-icon>-->
+            <ion-icon item-left name="{{child.icon}}"></ion-icon>
+            {{ child.name }}
+            <ion-badge *ngIf="child.dataCount>0" item-right color="danger">{{child.dataCount}}</ion-badge>
+          </button>
+ 
+          <ion-list white-background [@accordion]="(child.children && child.open ? 'opened' : 'closed')">
+            <!-- Third Level -->
+            <!--<button ion-item no-padding no-margin class="bottom-line" *ngFor="let item of child.children; let k = index" (click)="onDetailInfo(item)">
+              <ion-item padding-left padding-right>
+                <h2 class="bottom-line">{{ item.judul }}</h2>
+              </ion-item>
+              <span full-width innerHtml="{{item.kontenHtml}}"></span>
+            </button>-->
+            <div padding-left padding-right padding-top class="bottom-line" *ngFor="let item of child.children; let k = index" (click)="onDetailInfo(item)" [innerHtml]="item.kontenHtml | safeHtml">
+            </div>
+            <!--</ion-item>-->
+          </ion-list>
+ 
+        </ion-list-header>
+      </ion-list>
+      
+    </ion-list-header>
+  </ion-list>
+</ion-content>

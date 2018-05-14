@@ -1,0 +1,37 @@
+page-approval-result {
+    
+    .scroll-content{
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+
+    .item-md{
+        padding:0px;
+    }
+
+    [result-button]{
+        width: 100%;
+        font-weight: bold;
+    }
+    .col{
+        padding: 0px 16px 0px 16px;
+    }
+    ion-footer{
+        background-color: #424242;
+        padding-top: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    ion-item{
+        background-color: transparent;
+    }
+    [result-label]{
+        color: white;
+        margin: 10px 0px 10px 0px;
+        font-weight: bold;
+    }
+    [result-text]{
+        overflow: hidden;
+        padding: 5px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{notifikasi.judul}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding no-margin white-background>
+  <ion-item padding-right>
+    <a color="facebook" padding>{{notifikasi.waktu | date:'MMM dd yyyy h:mm a'}}</a>
+    <ion-label>{{notifikasi.keteranganSingkat}}</ion-label>
+  </ion-item>
+  <!--<div [innerHtml]="htmlText"></div>-->
+  <textarea *ngIf="notifikasi.tipe==='MESSAGE'" readonly class="area-pesan">{{pesanEncoded}}</textarea>
+</ion-content>

@@ -1,0 +1,85 @@
+/*  #Style First Screen (Home)
+================================================*/
+page-home {
+
+  .item-md.item-block .item-inner { padding-right: 0px; }
+
+  ion-slides{
+    background-color: white;
+    height: 200px;
+  }
+
+  ion-content {
+    ion-item {
+      //padding: 0px;
+      padding-right: 0px;
+      margin: 0px;
+    }
+  }
+
+  .logo-home {
+    
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    img {
+      padding: 0px;
+      margin: 0 auto;
+      height: 100px;
+      width: 200px;
+      display: block;
+      position: relative;
+      border-radius: 0px;
+    }
+
+  }
+
+  .promo-detail{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 0.6em;
+    font-weight: bold;
+    background-color: #1F407D;
+    i {
+      color: #3949ab;
+    }
+    a{
+      color: white;
+    }
+    ion-icon{
+      color: white;
+    }
+  }
+
+  .home-footer{
+    @include gradient-accent ($color-1, $color-2);
+  }
+
+  .img-promo{
+    position: relative;
+    width: 100%;
+    height: 190px;
+  }
+
+  .menu-icon-home{
+    font-size: 25px;
+  }
+
+  .notif-badge{
+    position: relative;
+    top: -15px;
+    left: -15px;
+  }
+
+  .new-badge{
+    height: 60px;
+    min-width: 70px;
+    width: auto !important;
+    padding: 10px;
+    font-size: 4.3rem;
+    text-align: center;
+  }
+
+}

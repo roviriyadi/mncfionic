@@ -1,0 +1,139 @@
+page-user-profile {
+
+    /*
+    ion-content {
+        background: no-repeat;
+        background-image: url("../assets/images/background/32.jpg");
+        background-size: cover;
+        background-position-x: 50%;
+    }
+    */
+
+    .scroll-content {
+        padding-top: 0 !important;
+    }
+
+    .item-md{
+        padding:0px;
+    }
+
+    [transparent]{
+        background: transparent !important;
+    }
+
+    .qrcode{
+        float: right;
+        img {
+            border: cadetblue;
+            border-style: dashed;
+        }
+    }
+
+    [qr-card]{
+        display: table;
+        margin: 0 auto;
+    }
+
+    [parent-card]{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: whitesmoke;
+    }
+
+    [e-card]{
+        margin: 0;
+        padding: 0;
+        border-radius: 15px;
+        width: 323.527559px;
+        height: 204.018898px;
+        background: url("../assets/images/e-card/front.jpg") no-repeat;
+        background-size: 100%;
+        display: table;
+        margin: 0 auto;
+
+        p{
+            color: #ffffff;
+        }
+    }
+    
+    [div-left]{
+        position: relative;
+        width: 210px;
+        left: 20px;
+        top: 110px;
+        [card-name]{
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        [card-joined]{
+            font-size: 1.2rem;
+        }
+    }
+
+    [div-right]{
+        position: relative;
+        width: 100px;
+        left: 225px;
+        top: 120px;
+        p{
+            font-size: 0.8rem;
+        }
+    }
+
+    [header-item-background] {
+        height: 250px;
+        position: relative;
+        z-index: 999;
+    }
+
+    ion-thumbnail img {
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        z-index: 10;
+        position: relative;
+    }
+    [parallax-title] {
+        z-index: 12;
+        position: relative;
+        text-transform: none;
+        font-family: "Oswald SemiBold" !important;
+        font-weight: bold;
+        font-size: 5em;
+        color: theme-colors('textColors', 'primary') !important;
+    }
+
+    [parallax-description] {
+    //margin-bottom: 20px;
+    letter-spacing: 1px;
+    }
+    [info] {
+        margin-bottom: 5px;
+        display: block;
+        >[item-subtitle]:nth-child(1) {
+            font-weight: bold !important;
+            line-height: 18px;
+        }
+        span {
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 20px;
+        margin-right: 5px;
+        }
+        p {
+        font-size: 12px;
+        }
+    }
+
+    [header-bcg] {
+    .item-inner {
+        padding: 0 !important;
+        text-align: center;
+    }
+    .label-md {
+        margin: 25px 8px 10px 0;
+    }
+
+    }
+}

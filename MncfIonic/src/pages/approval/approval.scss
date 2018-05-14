@@ -1,0 +1,34 @@
+page-approval {
+    .item-md.item-block .item-inner{
+        padding-right: 0px;
+    }
+    .accordion-list {
+        background: color($colors, dark);
+        //height: 100%;
+    }
+    .section {
+        background: #fff;
+        color: #000;
+        margin-bottom: 0px;
+    }
+    .section-active {
+        background: color($colors, facebook);
+        color: #fff;
+    }
+ 
+    .child {
+        background: color($colors, vk);
+        color: color($colors, light);
+        margin-bottom: 0px;
+    }
+    .child-item {
+        background: color($colors, light);
+        padding: 10px;
+    }
+    .label {
+        margin: 0px;
+    }
+    .list {
+        margin-bottom: 0px;
+    }
+}

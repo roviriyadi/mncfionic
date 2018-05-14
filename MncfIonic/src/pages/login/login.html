@@ -1,0 +1,44 @@
+<!--<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<!--<ion-content has-header background-size default-background>
+  <ion-grid>
+    <ion-row wrap padding>
+      <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>-->
+        <ion-content padding no-margin transparent>
+        <div class="form">
+          <h1 title text-center>Login</h1>
+          <ion-item no-padding transparent>
+            <!--<ion-icon item-left color="google" name="person"></ion-icon>-->
+            <ion-label floating>{{form.userlogin}}</ion-label>
+            <ion-input required type="text" [(ngModel)]="userlogin"></ion-input>
+          </ion-item>
+          <ion-item no-padding transparent>
+            <!--<ion-icon item-left color="google" name="unlock"></ion-icon>-->
+            <ion-label floating>{{form.password}}</ion-label>
+            <ion-input required type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+
+          <ion-grid padding-top>
+            <ion-row>
+              <ion-col>
+                <button ion-button left color="danger" full-width (click)="onCancel()">Cancel</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button right color="facebook" full-width (click)="onLogin()">Login</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </div>
+        </ion-content>
+<!--      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>-->

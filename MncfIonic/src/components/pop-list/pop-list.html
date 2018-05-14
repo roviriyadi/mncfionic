@@ -1,0 +1,7 @@
+<ion-list no-margin no-padding padding-bottom class="{{(!options.title ? 'padding-top' : '')}}">
+    <ion-list-header *ngIf="options.title" text-center>{{options.title}}</ion-list-header>
+    <button ion-item padding-left padding-right *ngFor="let option of options.list" (click)="onOptionClick(option)">
+        <ion-icon item-left no-margin no-padding color="{{option.color}}" name="{{option.icon}}"></ion-icon>
+        <ion-label item-right>{{option.name}}</ion-label>
+    </button>
+</ion-list>

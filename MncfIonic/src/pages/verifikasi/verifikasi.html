@@ -1,0 +1,63 @@
+
+<!--<ion-content background-size default-background>
+    <ion-grid>
+      <ion-row wrap padding>
+
+        <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>-->
+      <ion-content padding no-margin transparent>
+        <!--Form-->
+        <form novalidate class="form" (ngSubmit)="onSubmit()">
+          <!--Form Title-->
+          <h1 title text-center>{{form.verifikasi}}</h1>
+
+          <!-- Input Email -->
+          <ion-item no-padding *ngIf="!autoVerifikasi">
+            <ion-label floating>{{form.email}}</ion-label>
+            <ion-input required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [formControl]="email"></ion-input>
+          </ion-item>
+          <div *ngIf="!email.valid && email.touched">
+            <div error *ngIf="email.hasError('required')">
+              Email is required..!
+            </div>
+            <div error *ngIf="email.hasError('pattern') && !email.hasError('required')">
+              Invalid email format..!
+            </div>
+          </div>
+          <!-- End Input Email -->
+
+          <!-- Input No HP -->
+          <ion-item no-padding>
+            <ion-label floating>{{form.kodeVerifikasi}}</ion-label>
+            <ion-input required type="text" pattern="[0-9]*" minlength="8" maxlenght="8" [formControl]="kodeVerifikasi"></ion-input>
+          </ion-item>
+          <div *ngIf="!kodeVerifikasi.valid && kodeVerifikasi.touched">
+            <div error *ngIf="kodeVerifikasi.hasError('required')">
+              Verification Code is required..!
+            </div>
+            <div error *ngIf="(kodeVerifikasi.hasError('minlength') || kodeVerifikasi.hasError('maxlength')) && !kodeVerifikasi.hasError('pattern')">
+              Verification Code must be 8 digits..!
+            </div>
+            <div error *ngIf="kodeVerifikasi.hasError('pattern')">
+              Verification Code must be a number..!
+            </div>
+          </div>
+          <!-- End Input Kode -->
+
+          <!---Verifikasi button-->
+          <ion-grid padding-top>
+            <ion-row>
+              <ion-col>
+                <button ion-button left color="danger" full-width (click)="onCancel($event)">Cancel</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button right color="facebook" full-width [disabled]="!verifikasi.valid">Verify</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </form>
+      </ion-content>
+<!--      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>-->

@@ -1,0 +1,25 @@
+<ion-content padding no-margin transparent>
+  <div class="form">
+    <h1 title text-center>Password Approval</h1>
+    <ion-item no-padding transparent>
+      <ion-input required type="password" [(ngModel)]="password" (ngModelChange)="onChangePassword($event)"></ion-input>
+    </ion-item>
+    <div *ngIf="!matchPassword && password.length>0">
+      <div error>
+        Password does not match!
+      </div>
+    </div>
+
+    <ion-grid padding-top>
+      <ion-row>
+        <ion-col>
+          <button ion-button left color="danger" full-width (click)="onCancel()">Cancel</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button right color="facebook" [disabled]="!matchPassword" full-width (click)="onComfirm()">Confirm</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  </ion-content>

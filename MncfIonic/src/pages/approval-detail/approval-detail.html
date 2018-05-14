@@ -1,0 +1,152 @@
+<!--
+  Generated template for the ApprovalDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Approval Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content white-background>
+  <div style="display:flex; height: 100%; flex-direction: column;" >
+    <ion-scroll scrollY=true style="flex: 1 0 0;" >
+
+      <!--
+      <ion-refresher (ionRefresh)="onSync($event)">
+        <ion-refresher-content
+          pullingIcon="none"
+          pullingText=""
+          refreshingSpinner="none"
+          refreshingText="">
+        </ion-refresher-content>
+      </ion-refresher>
+      -->
+
+      <H3 padding-left padding-right padding-top class="title">{{approval.kodeReferensi}}</H3>
+
+      <ion-list white-background no-lines padding-top>
+        <!-- First Level -->
+        <ion-list-header *ngFor="let item of accordionItems; let i = index" no-lines no-padding no-margin>
+          <!-- Toggle Button -->
+          <button *ngIf="infoGroupList.length>1" ion-item (click)="toggleSection(i)" detail-none color="vk"><!-- [ngClass]="{'section-active': item.open, 'section': !item.open}"-->
+            <ion-icon item-left name="{{item.icon}}"></ion-icon>
+            {{ item.name }}
+            <ion-icon item-right name="{{(item.open?'arrow-up':'arrow-down')}}"></ion-icon>
+          </button>
+      
+          <ion-list [@accordion]="(item.children && item.open ? 'opened' : 'closed')" white-background>
+            <div style="height:16px;"></div>
+            <ion-item *ngFor="let child of item.children; let j = index" text-wrap padding-right>
+              <h2 *ngIf="child.label!=''">{{ child.label }}</h2>
+              <p class="bottom-line">{{ child.value }}</p>
+            </ion-item>
+            <div style="height:16px;"></div>
+          </ion-list>
+          
+        </ion-list-header>
+      </ion-list>
+
+      <button ion-item no-lines color="vk" (click)="toggleDocCheck()">
+        <ion-icon item-left name="folder-outline"></ion-icon>
+        Document Checklist
+        <ion-icon item-right name="{{(openDocCheck?'arrow-up':'arrow-down')}}"></ion-icon>
+      </button>
+      <img class="hide-image" #myImage/>
+      <ion-list *ngIf="openDocCheck" white-background> <!--[@accordion]="(openDocCheck ? 'opened' : 'closed')"-->
+        <ion-item class="child-item" *ngFor="let item of dockLists; let k = index" text-wrap padding-right>
+          <h2 no-paddingitem-left>{{ item.namaDokumen }}</h2>
+          <!--<button *ngIf="openDocCheck" no-padding ion-button outline item-end><b text-name color="dark" item-right (click)="downloadFile(item.namaDokumen,item.lokasiFile,item.namaFile,item.jenisFile,myImage,item.adaFile)">Download</b></button>-->
+          <ion-icon no-padding no-margin color="vk" item-right name="download" (click)="downloadFile(item.namaDokumen,item.lokasiFile,item.namaFile,item.jenisFile,myImage,item.adaFile)"></ion-icon>
+        </ion-item>
+        <ion-item no-lines no-padding no-margin></ion-item>
+      </ion-list>
+
+      <button *ngIf="approvalProgressList" ion-item no-lines color="vk" (click)="toggleApprHis()">
+        <ion-icon item-left name="infinite"></ion-icon>
+        Approval History
+        <ion-icon item-right name="{{(openApprHis?'arrow-up':'arrow-down')}}"></ion-icon>
+      </button>
+      <ion-item *ngIf="openApprHis" white-background no-padding no-margin>
+        <section id="cd-timeline" class="cd-container" white-background>
+          <div white-background *ngFor="let item of approvalProgressList; let i = index">
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-picture dark">
+                <img src="{{item.avatarLink}}">
+              </div>
+              <div class="cd-timeline-content dark">
+                <h6 class="marginBottom0 marginTop0">{{item.namaUser}}</h6>
+                <p *ngIf="item.sudahProses" class="marginTop5 cd-author">{{item.namaStatus}} on {{item.tglResult}}</p><!-- | date: "dd/MM/yyyy H:mm:ss"-->
+                <p *ngIf="item.sudahProses" text-wrap><b>Notes : </b>
+                  <span class="timelineText" innerHtml="{{item.catatan}}"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ion-item>
+
+      <button ion-item no-lines color="vk" (click)="toggleExecutiveSummarySection()"><!-- [ngClass]="{'section-active': item.open, 'section': !item.open}"-->
+        <ion-icon item-left name="paper-outline"></ion-icon>
+        Executive Summary
+        <ion-icon item-right name="{{(openExecutiveSum?'arrow-up':'arrow-down')}}"></ion-icon>
+      </button>
+      <div id="exsum-div">
+        <!--<iframe frameborder="0" allowtransparency="true" sandbox="allow-forms allow-popups allow-scripts" allowfullscreen width="100%" height="100%" src="https://angular.io/guide/template-syntax"></iframe>-->
+      </div>
+    </ion-scroll>
+
+    <ion-grid *ngIf="approval.kodeStatus==='NEW' && !showResult">
+      <ion-row>
+        <ion-col>
+          <button ion-button color="whatsapp" full-width (click)="toggleProses()">Process</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid margin-top *ngIf="showResult" pattern-background>
+      <ion-row>
+        <ion-label result-label>Result</ion-label>
+      </ion-row>
+      <ion-row white-background>
+        <ion-item no-padding no-margin no-lines>
+          <ion-label floating style="display:none;">Result</ion-label>
+          <ion-select padding-left [(ngModel)]="result.kodeStatus" multiple="false">
+            <ion-option *ngFor="let status of listStatus" [value]="status.kodeStatus">{{status.nama}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-label result-label>Notes</ion-label>
+      </ion-row>
+      <ion-row white-background>
+        <!--<ion-item no-padding no-margin no-lines>-->
+        <ion-textarea id="text-catatan" rows="5" no-padding no-margin result-text [(ngModel)]="result.catatan"></ion-textarea><!---->
+        <!--</ion-item>-->
+      </ion-row>
+      <ion-row no-padding no-margin>
+        <ion-col width-50 padding>
+          <button ion-button color="google" result-button (click)="onCancel()">Cancel</button>
+        </ion-col>
+        <ion-col width-50 padding>
+          <button ion-button color="facebook" result-button (click)="onSubmit()">Submit</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>
+
+<!--
+<ion-footer white-background *ngIf="approval.kodeStatus==='NEW'">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="whatsapp" full-width (click)="onProcess()">Process</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+-->

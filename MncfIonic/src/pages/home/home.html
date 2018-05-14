@@ -1,0 +1,85 @@
+<ion-header><!--no-border-->
+  <ion-navbar><!--transparent-->
+    <button ion-button menuToggle>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
+    </button>
+    <!--<ion-title text-center>MNCF Mobile Apps</ion-title>-->
+    <ion-buttons end>
+      <button ion-button no-padding no-margin clear no-lines (click)="onViewNotification()">
+        <ion-icon item-center color="light" name="notifications" class="menu-icon-home">
+          <ion-badge *ngIf="unreadNotification>0" color="danger" class="notif-badge">{{unreadNotification}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+<!--  <ion-slides no-padding no-margin *ngIf="promotionList" autoplay="5000" pager="true" loop="true" speed="2000">
+    <ion-slide *ngFor="let promo of promotionList">
+      <img src="{{promo.gambar}}"/>
+      <!- - <img inputSrc="{{promo.gambar}}" lazy-load /> - ->
+    </ion-slide>
+  </ion-slides>
+-->
+</ion-header>
+
+<ion-content white-background fullscreen padding-top>
+  <div white-background class="logo-home">
+    <img src="./assets/images/logo/mncf.png">
+    <!--<h2 app-title>MNCF Mobile</h2>-->
+  </div>
+
+  <ion-slides margin-top white-background *ngIf="promotionList" autoplay="5000" pager="true" loop="true" speed="2000"> <!--  -->
+    <ion-slide *ngFor="let promo of promotionList">
+      <img class="img-promo" src="{{promo.gambar}}" image-cache imageViewer/>
+    </ion-slide>
+  </ion-slides>
+
+  <button *ngIf="approvalNewCount>0" ion-item no-lines (click)="onMenuApproval()" color="vk" margin-top>
+    <h1>NEW APPROVAL</h1>
+    <ion-badge color="danger" class="new-badge" item-right>{{approvalNewCount}}</ion-badge>
+  </button>
+
+  <!--
+  <div padding>
+    <br><br><br>
+    <div style="text-align: center;">
+      MNC Finance is a family enterprise. We are driven by our passion to please and strive to be a community of love and honor.&nbsp; We work together as a family to bring you a creative, innovative and balanced living.
+    </div>
+    <div style="text-align: center;">
+      <br>
+    </div>
+    <div style="text-align: center;">As an enterprise, we embrace the honor of our promise. Our promise is to deliver the best to our customers. We continuously create living spaces, working areas, and entertainment centers with our customers in mind as our sole focus. What you need, what you want and what you seek are what we will provide.
+    </div>
+  </div>
+  -->
+  <!--
+  <ion-grid class="menu-grid">
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <button ion-item no-lines class="tabtext">
+          <ion-icon item-center color="facebook" name="help"></ion-icon>
+          <h3>Help</h3>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-item no-lines class="tabtext">
+          <ion-icon item-center color="light" name="star">
+            <ion-badge color="danger" class="badge-menu">2</ion-badge>
+          </ion-icon>
+          <h3>About</h3>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  -->
+
+</ion-content>
+<ion-footer fullscreen no-padding no-margin class="home-footer">
+  <div text-right color-white style="padding-bottom:5px; padding-top: 5px; padding-right: 10px; font-family: sans-serif; font-size: small;" full-width>
+    <b>&#169;</b>
+    <b>  2017</b>
+    <b> Created by</b>
+    <b> IT MNCF</b>
+    <b> Team.</b>
+  </div>
+</ion-footer>
