@@ -1,0 +1,48 @@
+* Cannot find module "rxjs/operators" :
+    -- ionic-img-viewer/dist/es2015/src/image-viewer-impl.js
+    import { delay, zip } from 'rxjs/operators'; --> import { delay, zip } from 'rxjs/Operator';
+
+* Error java.util.concurrent.ExecutionException: com.android.ide.common.process.ProcessException :
+Tambah di build.gradle 
+
+android {
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    ....
+    ....
+}
+
+defaultConfig {
+    multiDexEnabled true
+    .....
+    .....
+
+
+* What went wrong:
+A problem occurred configuring root project 'android'.
+> All flavors must now belong to a named flavor dimension. Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html
+
+android {
+    flavorDimensions "default"
+    ....
+    ....
+
+
+ionic cordova plugin add de.appplant.cordova.plugin.local-notification@^0.8.5
+
+* jika error build apk aneh2 deh.. :
+ionic cordova plugin rm cordova-plugin-compat --force
+ionic cordova platform rm android
+ionic cordova platform add android@6.3.0
+ionic cordova plugin add cordova-plugin-compat@1.2
+ionic cordova resources
+
+
+
+cordova-plugin-crosswalk-webview
+"cordova-plugin-crosswalk-webview": "^2.3.0",
+
+
+* ERROR: In <declare-styleable> FontFamilyFont, unable to find attribute android:fontVariationSettings
+cordova plugin add cordova-android-support-gradle-release --variable ANDROID_SUPPORT_VERSION=24.+
+https://github.com/phonegap/phonegap-plugin-barcodescanner/issues/616

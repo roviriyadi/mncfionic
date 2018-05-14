@@ -1,0 +1,22 @@
+{
+  "name": "ionicTemplate2",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+        "path": "/*",
+        "proxyUrl": "http://iproveapi.mncfinance.net/"
+    },
+    {
+        "path": "/report-mnc",
+        "proxyUrl": "http://report.mncfinance.net"
+    },
+    {
+        "path": "/dashboard-mnc",
+        "proxyUrl": "http://dashboard.mncfinance.net/Dashboard"
+    }
+  ]
+}
